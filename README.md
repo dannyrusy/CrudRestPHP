@@ -17,5 +17,5 @@ For the token we are used the web json token (see https://scotch.io/tutorials/th
 - testEndPoints ==> script php for test the End-Points
 
 #Next Steps
-- 
+- Implementation of other metods
 - WIKI and documentation
