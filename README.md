@@ -74,4 +74,5 @@ File .htaccess:
 
 #Next Steps
 - Implementation of the DELETE method
+- Add some authentication example
 
