@@ -61,6 +61,7 @@ function custom_file_get_contents($filename, $flags = null, $context = null, $ma
     $allowUrlFopen = preg_match('/1|yes|on|true/i', ini_get('allow_url_fopen'));
 
     return file_get_contents_curl($filename, $context);
+    //TODO Restore read script by file_get_contents (why not work???)
     /*
     if ($allowUrlFopen == FALSE && preg_match("@^https?://@", $filename)) {
         return file_get_contents_curl($filename, $context);

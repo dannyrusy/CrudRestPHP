@@ -1,6 +1,9 @@
 <?php
     require_once('utils/array2xml.php');
-
+	
+    /**
+     * Class WebServices 
+     */
     class WebServices {
 
         private $endpoints = array();
@@ -89,9 +92,27 @@
         }
 
         protected function is_valid_endpoint() {
-            return array_key_exists($this->endpoint, $this->endpoints);
+        	for ($i = 0; $i < count($this->endpoints); $i++) {
+        		$singoloEndPoint = $this->endpoints[$i];
+        		if ($singoloEndPoint['name'] == $this->endpoint 
+        				&& $singoloEndPoint['method'] == $this->method) {
+        			return true;
+        		}
+        	}
+        	return false;
         }
 
+        protected function get_endpoint_url() {
+        	for ($i = 0; $i < count($this->endpoints); $i++) {
+        		$singoloEndPoint = $this->endpoints[$i];
+        		if ($singoloEndPoint['name'] == $this->endpoint
+        				&& $singoloEndPoint['method'] == $this->method) {
+        			return $singoloEndPoint['url'];
+        		}
+        	}
+        	return "";
+        }
+        
         public function set_status($code)
         {
             if (function_exists('http_response_code')) {
@@ -143,12 +164,11 @@
             ob_clean(); ob_start();
             header("Content-type: application/json");
             $this->set_status($status);
-
             $encode = is_array($data);
             $data = is_array($data) ? $data : trim($data);
 
             if ($status != 200) {
-                echo json_encode(
+            	echo json_encode(
                     array('error' =>
                         array(
                             'code' => $status,
