@@ -67,6 +67,11 @@ File CustomWS.php:
 - in the login method you need to add the check user/password (or other mode) for the authentication. Example: check in your users table
 
 
+File .htaccess:
+
+- usually you don't need to change this file... this contain the rules for rewrite rules
+
+
 #Next Steps
-- Implementation DELETE method
+- Implementation of the DELETE method
 
